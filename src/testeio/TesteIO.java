@@ -11,12 +11,15 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.io.PrintStream;
+import java.util.Scanner;
 
 
 public class TesteIO {
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
-        InputStream is = new FileInputStream("leitura.txt");
+        /*
+        InputStream is = System.in; //new FileInputStream("leitura.txt");
         InputStreamReader isr = new InputStreamReader(is);
         BufferedReader br = new BufferedReader(isr);
         
@@ -33,6 +36,18 @@ public class TesteIO {
         
         br.close();
         bw.close();
+        */
+        
+        Scanner sc = new Scanner(new FileInputStream("leitura.txt"));
+        PrintStream ps = new PrintStream("saida.txt");
+        
+        while(sc.hasNextLine()){
+            String linha = sc.nextLine();
+            ps.println(linha);
+        }
+        
+        ps.close();
+        sc.close();
     }
     
     
